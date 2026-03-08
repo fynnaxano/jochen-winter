@@ -1496,7 +1496,7 @@ img {
 
 .karriere-hero {
     background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 50%, var(--primary-light) 100%);
-    padding: 160px 0 80px;
+    padding: 110px 0 50px;
     text-align: center;
 }
 
