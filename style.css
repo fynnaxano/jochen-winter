@@ -125,23 +125,23 @@ img {
 
 .navbar.scrolled {
     padding: 12px 0;
-    background: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(26, 58, 143, 0.08);
+    background: #1a3a8f;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border-bottom: none;
     box-shadow: var(--shadow-sm);
 }
 
 .navbar.scrolled .nav-logo {
-    color: var(--gray-800);
+    color: #fff;
 }
 
 .navbar.scrolled .nav-menu a {
-    color: var(--gray-800);
+    color: #fff;
 }
 
 .navbar.scrolled .nav-menu a:hover {
-    color: var(--primary);
+    color: var(--accent);
 }
 
 .nav-container {
@@ -186,7 +186,7 @@ img {
 }
 
 .navbar.scrolled .logo-winter {
-    color: var(--primary);
+    color: #fff;
 }
 
 .nav-menu {
@@ -265,7 +265,7 @@ img {
 }
 
 .navbar.scrolled .nav-toggle span {
-    background: var(--gray-800);
+    background: #fff;
 }
 
 /* ============================================
@@ -279,53 +279,26 @@ img {
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 40%, var(--primary-light) 100%);
+    background: url('images/jochen-winter-bus-hero.png') center 40% / cover no-repeat;
 }
 
 .hero-bg {
-    position: absolute;
-    inset: 0;
-    background:
-        radial-gradient(circle at 20% 80%, rgba(245, 200, 0, 0.08) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.05) 0%, transparent 50%),
-        radial-gradient(circle at 50% 50%, rgba(26, 58, 143, 0.3) 0%, transparent 70%);
+    display: none;
 }
 
 .hero-overlay {
     position: absolute;
     inset: 0;
-}
-
-.hero-bus-right {
-    position: absolute;
-    right: -200px;
-    bottom: 60px;
-    width: 750px;
-    height: auto;
-    opacity: 0;
-    animation: busEinfahrtRechts 1s ease-out 0.3s forwards;
-    pointer-events: none;
-    z-index: 1;
-}
-
-@keyframes busEinfahrtRechts {
-    from {
-        transform: translateX(600px);
-        opacity: 0;
-    }
-    to {
-        transform: translateX(0);
-        opacity: 0.18;
-    }
+    background: linear-gradient(rgba(10,25,80,0.7), rgba(10,25,80,0.5));
 }
 
 .hero-content {
     position: relative;
     z-index: 10;
     text-align: center;
-    max-width: 800px;
+    max-width: 700px;
     margin: 0 auto;
-    padding: 0 24px;
+    padding: 60px 24px 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -486,7 +459,8 @@ img {
    ============================================ */
 
 .leistungen {
-    background: var(--gray-50);
+    background: #f8f9fa;
+    padding-bottom: 80px;
 }
 
 .services-grid {
@@ -568,11 +542,73 @@ img {
 }
 
 /* ============================================
+   EINBLICK
+   ============================================ */
+
+.einblick-section {
+    background: #f8f9fa;
+}
+
+.einblick-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+}
+
+.einblick-tag {
+    display: inline-block;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #1a3a8f;
+    border: 2px solid #1a3a8f;
+    padding: 6px 18px;
+    border-radius: 60px;
+    margin-bottom: 20px;
+}
+
+.einblick-image img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    object-fit: cover;
+    object-position: left center;
+}
+
+.einblick-content .section-title {
+    text-align: left;
+    margin-top: 16px;
+}
+
+.einblick-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--gray-600);
+    margin-bottom: 32px;
+}
+
+/* ============================================
    ÜBER UNS / STATS
    ============================================ */
 
 .ueber-uns {
-    background: var(--white);
+    background: linear-gradient(135deg, #1a3a8f 0%, #0d1f4a 100%);
+    color: #fff;
+}
+
+.ueber-uns .section-title,
+.ueber-uns .section-desc {
+    color: #fff;
+}
+
+.ueber-uns .section-tag {
+    color: var(--accent);
+    background: rgba(255, 255, 255, 0.1);
 }
 
 .stats-grid {
@@ -585,7 +621,7 @@ img {
 .stat-card {
     text-align: center;
     padding: 40px 20px;
-    background: linear-gradient(135deg, rgba(26, 58, 143, 0.03), rgba(26, 58, 143, 0.07));
+    background: rgba(255, 255, 255, 0.08);
     border-radius: var(--radius-lg);
     transition: all var(--transition);
 }
@@ -599,7 +635,7 @@ img {
     font-family: 'Montserrat', sans-serif;
     font-weight: 800;
     font-size: 3rem;
-    color: var(--primary);
+    color: #fff;
     display: inline;
     line-height: 1;
 }
@@ -614,7 +650,7 @@ img {
 
 .stat-label {
     font-size: 0.9rem;
-    color: var(--gray-600);
+    color: rgba(255, 255, 255, 0.7);
     margin-top: 8px;
     font-weight: 500;
 }
@@ -635,12 +671,12 @@ img {
     flex-shrink: 0;
     width: 44px;
     height: 44px;
-    background: rgba(26, 58, 143, 0.08);
+    background: rgba(255, 255, 255, 0.12);
     border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--primary);
+    color: var(--accent);
 }
 
 .about-feature-icon svg {
@@ -651,12 +687,12 @@ img {
 .about-feature h4 {
     font-size: 1rem;
     margin-bottom: 4px;
-    color: var(--gray-800);
+    color: #fff;
 }
 
 .about-feature p {
     font-size: 0.88rem;
-    color: var(--gray-600);
+    color: rgba(255, 255, 255, 0.7);
     line-height: 1.6;
 }
 
@@ -666,10 +702,10 @@ img {
 
 /* Kontakt Section */
 .kontakt-section {
-    background: #f8f9fa;
+    background: #ffffff;
+    color: #1a1a2e;
 }
 
-/* Centered stacked layout */
 .kontakt-header {
     text-align: center;
     margin-bottom: 48px;
@@ -679,7 +715,7 @@ img {
     font-family: 'Montserrat', sans-serif;
     font-size: clamp(2rem, 3.5vw, 2.6rem);
     font-weight: 800;
-    color: var(--gray-800);
+    color: #1a1a2e;
     line-height: 1.15;
     margin: 0 0 16px;
 }
@@ -702,6 +738,10 @@ img {
     display: flex;
     align-items: flex-start;
     gap: 12px;
+    background: #fff;
+    padding: 16px 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
 }
 
 .kontakt-info-item svg {
@@ -721,7 +761,7 @@ img {
     font-family: 'Montserrat', sans-serif;
     font-size: 0.75rem;
     font-weight: 700;
-    color: var(--gray-800);
+    color: #1a1a2e;
     letter-spacing: 0.03em;
     text-transform: uppercase;
 }
@@ -1769,23 +1809,10 @@ img {
    ============================================ */
 
 .reveal {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
-                transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.reveal.visible {
     opacity: 1;
-    transform: translateY(0);
+    transform: none;
 }
 
-.reveal:nth-child(2) { transition-delay: 0.1s; }
-.reveal:nth-child(3) { transition-delay: 0.2s; }
-.reveal:nth-child(4) { transition-delay: 0.3s; }
-.reveal:nth-child(5) { transition-delay: 0.4s; }
-.reveal:nth-child(6) { transition-delay: 0.5s; }
-.reveal:nth-child(7) { transition-delay: 0.6s; }
 
 /* ============================================
    RESPONSIVE
@@ -1889,19 +1916,27 @@ img {
         align-items: flex-start;
         padding-top: 130px;
         padding-bottom: 220px;
-    }
-    .hero-title {
-        font-size: 2.2rem;
-    }
-    .hero {
         position: relative;
         overflow: hidden;
     }
-    .hero-bus-right {
-        width: 380px;
-        right: -60px;
-        bottom: -10px;
-        position: absolute;
+    .hero-content {
+        text-align: center;
+        padding: 0 20px;
+    }
+    .hero-title {
+        font-size: 2rem;
+    }
+    .hero-subtitle {
+        font-size: 0.85rem;
+    }
+
+    /* === EINBLICK MOBILE === */
+    .einblick-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+    .einblick-content .section-title {
+        font-size: 1.6rem;
     }
 
     /* === REST === */
@@ -1990,8 +2025,8 @@ img {
     }
     .kontakt-info {
         flex-direction: column;
-        align-items: center;
-        gap: 18px;
+        align-items: stretch;
+        gap: 12px;
         margin-bottom: 32px;
     }
     .funnel-card {

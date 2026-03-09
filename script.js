@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ---- Intersection Observer for Reveal Animations ----
-    const reveals = document.querySelectorAll('.reveal');
+    const reveals = document.querySelectorAll('.reveal-animate');
 
     const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 revealObserver.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.05, rootMargin: '0px 0px -30px 0px' });
+    }, { threshold: 0.05, rootMargin: '0px 0px -50px 0px' });
 
     reveals.forEach(el => revealObserver.observe(el));
 
@@ -56,60 +56,41 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
         reveals.forEach(el => {
             const rect = el.getBoundingClientRect();
-            if (rect.top < window.innerHeight) {
+            if (rect.top < window.innerHeight && rect.bottom > 0) {
                 el.classList.add('visible');
             }
         });
-    }, 100);
+    }, 200);
 
     // ---- Counter Animation ----
     const counters = document.querySelectorAll('.stat-number');
-    let countersAnimated = false;
-
-    const animateCounters = () => {
-        if (countersAnimated) return;
-        countersAnimated = true;
-
-        counters.forEach(counter => {
-            const target = Number(counter.getAttribute('data-target'));
-            if (isNaN(target) || target === 0) return;
-
-            const duration = 2000;
-            const startTime = performance.now();
-            const easeOutQuart = t => 1 - Math.pow(1 - t, 4);
-
-            const update = (currentTime) => {
-                const elapsed = currentTime - startTime;
-                const progress = Math.min(elapsed / duration, 1);
-                const easedProgress = easeOutQuart(progress);
-                const current = Math.round(easedProgress * target);
-
-                counter.textContent = current.toLocaleString('de-DE');
-
-                if (progress < 1) {
-                    requestAnimationFrame(update);
-                } else {
-                    counter.textContent = target.toLocaleString('de-DE');
-                }
-            };
-
-            requestAnimationFrame(update);
-        });
-    };
-
-    // Counter startet wenn stats-grid visible wird
-    const statsSection = document.querySelector('.stats-grid');
-    if (statsSection) {
-        const statsObserver = new IntersectionObserver((entries) => {
+    if (counters.length > 0) {
+        const counterObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    animateCounters();
-                    statsObserver.unobserve(entry.target);
+                    const el = entry.target;
+                    const target = parseInt(el.getAttribute('data-target'));
+                    if (!target || el.dataset.counted) return;
+                    el.dataset.counted = 'true';
+                    const duration = 2000;
+                    const steps = 60;
+                    const increment = target / steps;
+                    let current = 0;
+                    let step = 0;
+                    const timer = setInterval(() => {
+                        step++;
+                        current = Math.round((target * step) / steps);
+                        el.textContent = current;
+                        if (step >= steps) {
+                            el.textContent = target;
+                            clearInterval(timer);
+                        }
+                    }, duration / steps);
+                    counterObserver.unobserve(el);
                 }
             });
-        }, { threshold: 0.05 });
-
-        statsObserver.observe(statsSection);
+        }, { threshold: 0.3 });
+        counters.forEach(el => counterObserver.observe(el));
     }
 
     // ---- Smooth Scroll for Anchor Links ----
