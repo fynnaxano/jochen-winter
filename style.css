@@ -1307,16 +1307,8 @@ img {
 /* Impressionen */
 .impressionen-section {
     background: #f8f9fa;
-    padding: 80px 0;
-}
-
-.impressionen-title {
-    font-family: 'Montserrat', sans-serif;
-    font-size: clamp(1.8rem, 3vw, 2.4rem);
-    font-weight: 800;
-    color: var(--primary-dark);
-    text-align: center;
-    margin-bottom: 40px;
+    padding: 40px 0 80px;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 .impressionen-grid {
